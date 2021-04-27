@@ -1,0 +1,33 @@
+<launch>
+    
+    
+    <arg name="target" default="person" />
+    <arg name="focal_length" default="747.0" />
+    <arg name="known_target_width_cm" default="50.0" />
+    <arg name="min_distance" default="0.3" /> 
+    <arg name="max_distance" default="1.5" /> 
+
+    <arg name="min_speed" default="0.1" /> 
+    <arg name="max_speed" default="1.0" />
+
+    <arg name="min_degree_angle_rotation" default="10.0" />
+   
+    <node name="person_follower_rgb_node" pkg="person_follower_rgb" 
+            type="person_follower_rgb_node">   
+
+        <param name="target" value="$(arg target)" /> 
+        <param name="focal_length" value="$(arg focal_length)" /> 
+        <param name="known_target_width_cm" value="$(arg known_target_width_cm)" /> 
+        <param name="min_distance" value="$(arg min_distance)" /> 
+        <param name="max_distance" value="$(arg max_distance)" /> 
+        <param name="min_speed" value="$(arg min_speed)" /> 
+        <param name="max_speed" value="$(arg max_speed)" />
+        <param name="min_degree_angle_rotation" value="$(arg min_degree_angle_rotation)" />
+
+    </node>
+
+    <node name="bbox_convertor_node" pkg="bbox_convertor"
+          type="bbox_convertor_node"  output="screen">
+    </node>	
+
+</launch>
